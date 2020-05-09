@@ -29,7 +29,7 @@ char Buf[5];
 int analogInPin = A0;          // Analog input pin
 int val = 0;                //Η τιμή την οποία διαβάζει το ADC
 int ldrVal =0;
-int dark_limit = 400;        //Όριο κάτω από το οποίο ανιχνεύεται ως σκότος
+int dark_limit = 20;        //Όριο κάτω από το οποίο ανιχνεύεται ως σκότος
 
 
 char buffer[10];
