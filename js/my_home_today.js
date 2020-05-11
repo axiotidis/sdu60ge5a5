@@ -14,7 +14,7 @@
 firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the database service
-let database = firebase.database();
+//let database = firebase.database();
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
