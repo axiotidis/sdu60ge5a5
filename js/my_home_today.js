@@ -29,7 +29,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				alert(message);
 			}
 			} else {
-					location.replace("signin.html");
+					location.replace("index.html");
 				}
 					
 	});
