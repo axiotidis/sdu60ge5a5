@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 		user = firebase.auth().currentUser;
 		var email = user.email;
-		var name = user.name;
+		var name = user.displayName;
 		if (email != null){
 			//var message = 'Welcome user ' + email;
 			//alert(message);
