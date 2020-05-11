@@ -1,28 +1,21 @@
-// 1) Create a new firebaseui.auth instance stored to our local variable ui
-const ui = new firebase.auth.GoogleAuthProvider();
+var provider = new firebase.auth.GoogleAuthProvider();
 
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
-// 2) These are our configurations.
-const uiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult(authResult, redirectUrl) {
-      return true;
-    },
-    uiShown() {
-      //document.getElementById('loader').style.display = 'none';
-    },
-  },
-  signInFlow: 'popup',
-  signInSuccessUrl: 'my_home_today.html',
-  signInOptions: [
-    //firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    //Additional login options should be listed here
-    //once they are enabled within the console.
-  ],
-};
-
-// 3) Call the 'start' method on our ui class
-// including our configuration options. 
-ui.start('#firebaseui-auth-container', uiConfig);
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+  alert("ok");
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
