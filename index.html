@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		
-		
+		<h3>Axiotidis - Energy Monitoring System</h3>
 		<div class="embed-responsive embed-responsive-16by9" id="firebaseui-auth-container"></div>
 		
 		<div class="text-center">
@@ -19,38 +19,34 @@
 		
 		
 		
-		
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
 
 		<!-- TODO: Add SDKs for Firebase products that you want to use
-			https://firebase.google.com/docs/web/setup#config-web-app -->
-		<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+     		https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
 
 		<script>
-			// Your web app's Firebase configuration
-			var firebaseConfig = {
-				apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
-				authDomain: "sdy60ge5a5.firebaseapp.com",
-				databaseURL: "https://sdy60ge5a5.firebaseio.com",
-				projectId: "sdy60ge5a5",
-				storageBucket: "sdy60ge5a5.appspot.com",
-				messagingSenderId: "96930165171",
-				appId: "1:96930165171:web:1c766954e21cc757d09bc6",
-				measurementId: "G-H3SGFNEN3P"
-			};
-			// Initialize Firebase
-			firebase.initializeApp(firebaseConfig);
-			firebase.analytics();
+  		// Your web app's Firebase configuration
+  		var firebaseConfig = {
+    			apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
+   	 		authDomain: "sdy60ge5a5.firebaseapp.com",
+    			databaseURL: "https://sdy60ge5a5.firebaseio.com",
+    			projectId: "sdy60ge5a5",
+    			storageBucket: "sdy60ge5a5.appspot.com",
+    			messagingSenderId: "96930165171",
+    			appId: "1:96930165171:web:1c766954e21cc757d09bc6",
+    			measurementId: "G-H3SGFNEN3P"
+  		};
+  		// Initialize Firebase
+  		firebase.initializeApp(firebaseConfig);
+  		firebase.analytics();
 		</script>
 		
+		
 		<!-- Firebase UI -->
-		<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-		<link
-			type="text/css"
-			rel="stylesheet"
-			href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
-		/>    
+		<script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
+		<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css" />  
 		<script src="js/auth.js"></script>
 
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
