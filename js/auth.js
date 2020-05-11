@@ -1,5 +1,6 @@
 // 1) Create a new firebaseui.auth instance stored to our local variable ui
-const ui = new firebase-ui-auth.auth.AuthUI(firebase.auth());
+const ui = new firebase.auth.GoogleAuthProvider();
+
 
 // 2) These are our configurations.
 const uiConfig = {
