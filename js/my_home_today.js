@@ -27,6 +27,17 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 					
 	});
+
+function readUserData(name){
+	var rootRef = firebase.database.ref();
+	var urlRef = rootRef.child("users/"+name+"/consumption/today/totals/");
+	urlRef.once("value", function(snapshot) {
+		snapshot.forEach(function(child) {
+    console.log(child.key+": "+child.val());
+  });
+});
+}
+/*
 	
 //find user's records based on display name attribute
 function readUserData(name){
@@ -37,10 +48,11 @@ function readUserData(name){
 	//let ref = database.ref("users/" + dbKey); 
 	//ref.on("value" , gotData , errData);
 	});
-	ref.on("value" , gotData , errData);
+	//ref.on("value" , gotData , errData);
 	
-}	
+}	*/
 
+/*
 function gotData(data){
 	data = data.val();
 	todayTotal = data.total;
@@ -51,6 +63,7 @@ function gotData(data){
 	//console.log("Current user at 00h = " + today00+" kWh");
 	//console.log("Current user points = " + userPoints);
 
+*/
 
 /*
 	
