@@ -14,23 +14,28 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the database service
-//let database = firebase.database();
+let database = firebase.database();
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 		user = firebase.auth().currentUser;
-		var email = user.email;
 		var name = user.displayName;
-		if (email != null){
-			//var message = 'Welcome user ' + email;
-			//alert(message);
-			}
-		if(name != null){
-				var message = 'Welcome user ' + name;
-				alert(message);
-			}
-			} else {
+		//read user details
+		readUserData(name);
+		} else {
 					location.replace("index.html");
 				}
 					
 	});
+	
+//find user's records based on display name attribute
+function readUserData(name){
+	var ref = firebase.database().ref("users/" + name + "/consumption/today/totals/");
+	ref.on("value" , gotData , errData);
+	}
+
+function gotData(data){
+	data = data.val;
+	today00 = data.00;
+	alert("Today at 00:00 = "+today00)
+}
