@@ -37,12 +37,10 @@ function readUserData(name){
     //console.log(child.key+": "+child.val());
 	totalsArray = snapshotToArray(snapshot);
 	//console.log(totalsArray);
-	var arrayLength = totalsArray.length;
-	console.log("There are " + arrayLength + "  records");
-	console.log(totalsArray);
+	
   });
 });
-
+console.log("The first record is: "+totalsArray[0]" : "+totalsArray[1]);
 }
 
 function snapshotToArray(snapshot) {
