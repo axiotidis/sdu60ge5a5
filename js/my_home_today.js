@@ -39,3 +39,7 @@ function gotData(data){
 	today00 = data.totals;
 	alert("Today at 00:00 = "+today00)
 }
+
+function errData(error){
+	console.log(error.message , error.code);
+}
