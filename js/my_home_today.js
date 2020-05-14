@@ -36,6 +36,6 @@ function readUserData(name){
 
 function gotData(data){
 	data = data.val;
-	today00 = data.00;
+	today00 = data.00.toString();
 	alert("Today at 00:00 = "+today00)
 }
