@@ -29,7 +29,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	});
 
 function readUserData(name){
-	var rootRef = firebase.database.ref();
+	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users/"+name+"/consumption/today/totals/");
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
