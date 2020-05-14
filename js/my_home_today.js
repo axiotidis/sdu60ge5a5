@@ -36,7 +36,7 @@ function readUserData(name){
 }	
 
 function gotData(data){
-	var zero = "00";
+	var zero = '00';
 	data = data.val();
 	todayTotal = data.total;
 	today00 = data.zero;
