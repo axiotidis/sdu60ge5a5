@@ -30,24 +30,22 @@ firebase.auth().onAuthStateChanged(function(user) {
 	
 //find user's records based on display name attribute
 function readUserData(name){
-	var ref = firebase.database().ref("sdy60ge5a5");
-	ref.orderByChild("users").equalTo(name).on("child_added", function(snapshot) {
-	console.log(snapshot.key);
-	dbKey = snapshot.key;	
-	let ref = database.ref("users/" + dbKey); 
-	//ref.on("value" , gotData , errData);
-	});
+	var ref = firebase.database().ref("users/"+name+"/consumption/today/totals/");
+	ref.on("value" , gotData , errData);
 	
 }	
 
 function gotData(data){
 	data = data.val();
-	userEmail = data.email;
-	userNickname = data.nickname;
-	userPoints = data.points;
-	//console.log("Current user email = " + userEmail);
+	userTotal = data.total;
+	//userNickname = data.nickname;
+	//userPoints = data.points;
+	console.log("Current user total = " + userTotal+" kWh");
 	//console.log("Current user nickname = " + userNickname);
 	//console.log("Current user points = " + userPoints);
+
+
+/*
 	
 	var idUser = 0;
 	var usersArray = [];
@@ -117,9 +115,11 @@ for (var i = 0; i < numberOfUsers; ++i){
 		//console.log("User " + currentNickname + " have " + currentPoints + " points");
 		
 	}
-});
+});						*/
 }
 
+
+/*
 //Listen for form submit
 document.getElementById('scoreForm').addEventListener('submit', submitForm);
 
@@ -147,11 +147,14 @@ function submitForm(e){
         window.location.replace("app.html");
     },4000);
 	
-}
+}			*/
 
 function errData(error){
 	console.log(error.message , error.code);
 }
+
+
+/*
 
 function snapshotToArray(snapshot) {
     var returnArr = [];
@@ -165,3 +168,5 @@ function snapshotToArray(snapshot) {
 
     return returnArr;
 };
+
+*/
