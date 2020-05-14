@@ -40,7 +40,7 @@ function readUserData(name){
 	
   });
 });
-console.log("The first record is: "+totalsArray[0]" : "+totalsArray[1]);
+console.log("The first record is: "+totalsArray[0]+" : "+totalsArray[1]);
 }
 
 function snapshotToArray(snapshot) {
