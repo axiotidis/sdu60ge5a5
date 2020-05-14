@@ -39,8 +39,10 @@ function readUserData(name){
 	//console.log(totalsArray);
   });
 });
-var records = totalsArray.length;
-console.log("There are " + records + "records");
+for (var i=0; i<25; ++i){
+	console.log(totalsArray[i, 0]+":"+totalsArray[i, 1]);
+}
+
 }
 
 function snapshotToArray(snapshot) {
