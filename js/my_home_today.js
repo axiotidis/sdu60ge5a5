@@ -47,7 +47,7 @@ function snapshotToArray(snapshot) {
 	snapshot.forEach(function(childSnapshot) {
 		var label = childSnapshot.key;
 		var value = childSnapshot.val();
-		returnArray.push([label, value]);
+		returnArray.push(label, value);
 	});
 	
 	return returnArray;
