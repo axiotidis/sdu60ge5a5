@@ -31,9 +31,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 //find user's records based on display name attribute
 function readUserData(name){
 	var ref = firebase.database().ref("users/"+name+"/consumption/today/totals/");
-	ref.orderByChild("00").equalTo("00").on("child_added", function(snapshot) {
-	console.log(snapshot.key);
-	dbKey = snapshot.key;	
+	ref.orderByChild('00').equalTo('00').on("child_added", function(snapshot) {
+	console.log("snapshot key= "+snapshot.key);
+	//dbKey = snapshot.key;	
 	//let ref = database.ref("users/" + dbKey); 
 	//ref.on("value" , gotData , errData);
 	});
