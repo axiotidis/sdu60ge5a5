@@ -30,17 +30,138 @@ firebase.auth().onAuthStateChanged(function(user) {
 	
 //find user's records based on display name attribute
 function readUserData(name){
-	//var ref = firebase.database().ref("users");
-	let ref = database.ref("users/" + name + "/consumption/today");
-	ref.on("value" , gotData , errData);
-	}
+	var ref = firebase.database().ref("sdy60ge5a5");
+	ref.orderByChild("users").equalTo(name).on("child_added", function(snapshot) {
+	console.log(snapshot.key);
+	dbKey = snapshot.key;	
+	let ref = database.ref("users/" + dbKey); 
+	//ref.on("value" , gotData , errData);
+	});
+	
+}	
 
 function gotData(data){
-	data = data.val;
-	todayTot = data.totals;
-	alert("Today total = "+todayTot)
+	data = data.val();
+	userEmail = data.email;
+	userNickname = data.nickname;
+	userPoints = data.points;
+	//console.log("Current user email = " + userEmail);
+	//console.log("Current user nickname = " + userNickname);
+	//console.log("Current user points = " + userPoints);
+	
+	var idUser = 0;
+	var usersArray = [];
+	// Get a database reference to the users section
+    var ref = firebase.database().ref().child("users");
+	ref.on('value', function(snapshot) {
+    //console.log(snapshotToArray(snapshot));
+	usersArray = snapshotToArray(snapshot);
+	//console.log(usersArray);
+	var numberOfUsers = usersArray.length;
+	//console.log("There are " + numberOfUsers + "  registered users");
+		
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'This week\'s scoring board',
+            data: [],
+            backgroundColor: [],
+            borderColor: [],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+		
+for (var i = 0; i < numberOfUsers; ++i){
+		if (usersArray[i].nickname == userNickname){
+			myChart.data.labels.push(usersArray[i].nickname + " (You)");
+			myChart.update();
+			myChart.data.datasets.forEach((dataset) => {
+				dataset.backgroundColor.push('rgba(255, 102, 0, 1)');	//red bar for current user
+			});
+			myChart.update();
+			myChart.data.datasets.forEach((dataset) => {
+				dataset.borderColor.push('rgba(255, 102, 0, 0.2)');
+			});
+			myChart.update();
+			idUser = i;
+		}else {
+			myChart.data.labels.push(usersArray[i].nickname);
+			myChart.update();
+			myChart.data.datasets.forEach((dataset) => {
+				dataset.backgroundColor.push('rgba(0, 151, 70, 1)');
+			});
+			myChart.update();
+			myChart.data.datasets.forEach((dataset) => {
+				dataset.borderColor.push('rgba(0, 151, 70, 0.2)');
+		});
+			myChart.update();
+		}
+		myChart.data.datasets.forEach((dataset) => {
+			dataset.data.push(usersArray[i].points);
+		});
+		myChart.update();
+		//console.log("User " + currentNickname + " have " + currentPoints + " points");
+		
+	}
+});
+}
+
+//Listen for form submit
+document.getElementById('scoreForm').addEventListener('submit', submitForm);
+
+//Submit form
+function submitForm(e){
+    e.preventDefault();
+  
+    
+    //Show alert
+    document.querySelector('.alert').style.display = 'block';
+
+    //Hide alert after 3 sec
+    setTimeout(function(){
+        document.querySelector('.alert').style.display = 'none';
+    },2000);
+
+    
+
+    setTimeout(function(){
+        document.querySelector('.continue').style.display = 'block';
+    },2000);
+
+    setTimeout(function(){
+        document.querySelector('.continue').style.display = 'none';
+        window.location.replace("app.html");
+    },4000);
+	
 }
 
 function errData(error){
 	console.log(error.message , error.code);
 }
+
+function snapshotToArray(snapshot) {
+    var returnArr = [];
+
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+
+    return returnArr;
+};
