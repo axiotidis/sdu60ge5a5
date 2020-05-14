@@ -30,7 +30,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	
 //find user's records based on display name attribute
 function readUserData(name){
-	var ref = firebase.database().ref("users");
+	//var ref = firebase.database().ref("users");
 	let ref = database.ref("users/" + name + "/consumption/today");
 	ref.on("value" , gotData , errData);
 	}
