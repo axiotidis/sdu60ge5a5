@@ -38,7 +38,7 @@ function readUserData(name){
 	totalsArray = snapshotToArray(snapshot);
 	//console.log(totalsArray);
 	var arrayLength = totalsArray.length;
-	console.log("There are " + totalsArray + "  records");
+	console.log("There are " + arrayLength + "  records");
 	console.log(totalsArray);
   });
 });
