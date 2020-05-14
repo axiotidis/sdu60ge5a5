@@ -31,6 +31,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 //find user's records based on display name attribute
 function readUserData(name){
 	var ref = firebase.database().ref("users/"+name+"/consumption/today/totals/");
+	ref.orderByChild("00").equalTo("00").on("child_added", function(snapshot) {
+	console.log(snapshot.key);
+	dbKey = snapshot.key;	
+	//let ref = database.ref("users/" + dbKey); 
+	//ref.on("value" , gotData , errData);
+	});
 	ref.on("value" , gotData , errData);
 	
 }	
@@ -38,11 +44,11 @@ function readUserData(name){
 function gotData(data){
 	data = data.val();
 	todayTotal = data.total;
-	today00 = data."00";
+	//today00 = data.zero;
 	//userNickname = data.nickname;
 	//userPoints = data.points;
 	console.log("Current user total = " + todayTotal+" kWh");
-	console.log("Current user at 00h = " + today00+" kWh");
+	//console.log("Current user at 00h = " + today00+" kWh");
 	//console.log("Current user points = " + userPoints);
 
 
