@@ -29,7 +29,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	});
 
 function readUserData(name){
-	var totalsArray = [[],[]];
+	var totalsArray = [];
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users/"+name+"/consumption/today/totals/");
 	urlRef.once("value", function(snapshot) {
@@ -39,14 +39,13 @@ function readUserData(name){
 	//console.log(totalsArray);
   });
 });
-for (var i=0; i<25; ++i){
-	console.log(totalsArray[i, 0]+":"+totalsArray[i, 1]);
-}
-
+var arrayLength = totalsArray.length;
+console.log("There are " + totalsArray + "  records");
+console.log(totalsArray);
 }
 
 function snapshotToArray(snapshot) {
-	var returnArray = [[],[]];
+	var returnArray = [];
 	
 	snapshot.forEach(function(childSnapshot) {
 		var label = childSnapshot.key;
