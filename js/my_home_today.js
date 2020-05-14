@@ -29,7 +29,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	});
 
 function readUserData(name){
-	var totalsArray = [[]];
+	var totalsArray = [[],[]];
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users/"+name+"/consumption/today/totals/");
 	urlRef.once("value", function(snapshot) {
@@ -42,12 +42,12 @@ function readUserData(name){
 }
 
 function snapshotToArray(snapshot) {
-	var returnArray = [[]];
+	var returnArray = [[],[]];
 	
 	snapshot.forEach(function(childSnapshot) {
 		var label = childSnapshot.key;
 		var value = childSnapshot.val();
-		returnArray.push(label, value);
+		returnArray.push([[label], [value]]);
 	});
 	
 	return returnArray;
