@@ -36,9 +36,10 @@ function readUserData(name){
 }	
 
 function gotData(data){
+	var zero = "00";
 	data = data.val();
 	todayTotal = data.total;
-	today00 = data.00;
+	today00 = data.zero;
 	//userNickname = data.nickname;
 	//userPoints = data.points;
 	console.log("Current user total = " + todayTotal+" kWh");
