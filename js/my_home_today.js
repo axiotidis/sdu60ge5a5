@@ -37,11 +37,12 @@ function readUserData(name){
 
 function gotData(data){
 	data = data.val();
-	userTotal = data.total;
+	todayTotal = data.total;
+	today00 = data.00;
 	//userNickname = data.nickname;
 	//userPoints = data.points;
-	console.log("Current user total = " + userTotal+" kWh");
-	//console.log("Current user nickname = " + userNickname);
+	console.log("Current user total = " + todayTotal+" kWh");
+	console.log("Current user at 00h = " + today00+" kWh");
 	//console.log("Current user points = " + userPoints);
 
 
