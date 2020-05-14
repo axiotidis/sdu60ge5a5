@@ -36,9 +36,11 @@ function readUserData(name){
 		snapshot.forEach(function(child) {
     //console.log(child.key+": "+child.val());
 	totalsArray = snapshotToArray(snapshot);
-	console.log(totalsArray);
+	//console.log(totalsArray);
   });
 });
+var records = totalsArray.length;
+console.log("There are " + records + "records");
 }
 
 function snapshotToArray(snapshot) {
