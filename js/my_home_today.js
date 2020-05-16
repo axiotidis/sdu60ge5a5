@@ -68,16 +68,20 @@ function readUserData(name){
 });
 
 for (var i = 0; i < hoursOfDay; ++i){
-	myChart.data.labels.push(labelArray[i].dataArray[i]);
+	myChart.data.labels.push(labelArray[i].label);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
 				dataset.backgroundColor.push('rgba(0, 151, 70, 1)');
 			});
-			myChart.update();
-			myChart.data.datasets.forEach((dataset) => {
-				dataset.borderColor.push('rgba(255, 102, 0, 1)');
-		});
-			myChart.update();
+	myChart.update();
+	myChart.data.datasets.forEach((dataset) => {
+		dataset.borderColor.push('rgba(255, 102, 0, 1)');
+	});
+	myChart.update();
+	myChart.data.datasets.forEach((dataset) => {
+		dataset.data.push(dataArray[i].value);
+	});
+		myChart.update();
 }
 
 });
