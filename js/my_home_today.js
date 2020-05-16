@@ -40,7 +40,7 @@ function readTodayPerDevice(name){
 		//console.log(child.key+": "+child.val());
 		dDataArray = snapshotDataToArray(snapshot);
 		dLabelArray = snapshotLabelToArray(snapshot);
-		
+		});
 		var noOfDevices = dLabelArray.length;
 		
 		var dtx = document.getElementById('myDonut').getContext('2d');
@@ -101,7 +101,7 @@ function readTodayPerDevice(name){
 		});
 		myDonut.update();
 	});
-});
+}
 
 function readTodayTotals(name){
 	var dataArray = [];
@@ -182,7 +182,7 @@ function snapshotDataToArray(snapshot) {
 	});
 	
 	return returnArray;
-}
+};
 
 function snapshotLabelToArray(snapshot) {
 	var returnArray = [];
@@ -193,5 +193,5 @@ function snapshotLabelToArray(snapshot) {
 	});
 	
 	return returnArray;
-}
+};
 
