@@ -50,9 +50,14 @@ function readTodayPerDevice(name){
 			data: {
 				datasets: [{
 					data: [
-					for (var j = 0; j < noOfDevices; ++j) {
-						dataset.data.push(dDataArray[j]);
-					}
+					dDataArray[0],
+					dDataArray[1],
+					dDataArray[2],
+					dDataArray[3],
+					dDataArray[4],
+					dDataArray[5],
+					dDataArray[6],
+					dDataArray[7],
 					],
 					backgroundColor: [
 						window.chartColors.red,
@@ -67,9 +72,14 @@ function readTodayPerDevice(name){
 					label: 'Consumption per Device'
 				}],
 				labels: [
-				for (var k = 0; k < noOfDevices; ++k) {
-					dataset.data.push(dLabelArray[k]);
-				}
+				dLabelArray[0],
+				dLabelArray[1],
+				dLabelArray[2],
+				dLabelArray[3],
+				dLabelArray[4],
+				dLabelArray[5],
+				dLabelArray[6],
+				dLabelArray[7]
 				]
 				},
 				options: {
