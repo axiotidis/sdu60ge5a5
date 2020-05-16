@@ -101,7 +101,7 @@ function readTodayPerDevice(name){
 		});
 		myDonut.update();
 	});
-}
+});
 
 function readTodayTotals(name){
 	var dataArray = [];
