@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		//read user details
 		while (true){
 		readTodayData(name);
-		setTimeout(readTodayData, 60000);
+		setInterval(readTodayData, 60000);
 		}
 		} else {
 					location.replace("index.html");
