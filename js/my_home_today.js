@@ -65,9 +65,9 @@ function readTodayPerDevice(name){
 						window.chartColors.yellow,
 						window.chartColors.green,
 						window.chartColors.blue,
-						window.chartColors.red,			//change color
-						window.chartColors.orange,		//change color
-						window.chartColors.yellow,		//change color
+						window.chartColors.cyan,			
+						window.chartColors.magenta,		
+						window.chartColors.grey,		
 					],
 					label: 'Consumption per Device'
 				}],
