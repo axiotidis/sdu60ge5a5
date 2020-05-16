@@ -40,18 +40,16 @@ function readUserData(name){
 	//console.log(totalsArray);
 	
   });
-  console.log("The first record is: "+labelArray[0]+" : "+dataArray[0]);
-});
-
-}
-
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+  //console.log("The first record is: "+labelArray[0]+" : "+dataArray[0]);
+  var hoursOfDay = labelArray.length - 1;
+  
+  var ctx = document.getElementById('myChart').getContext('2d');
+	var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [],
         datasets: [{
-            label: 'This week\'s scoring board',
+            label: 'Your consumption in detail',
             data: [],
             backgroundColor: [],
             borderColor: [],
@@ -68,6 +66,26 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+for (var i = 0; i < hoursOfDay; ++i){
+	myChart.data.labels.push(labelArray[i].dataArray[i]);
+	myChart.update();
+	myChart.data.datasets.forEach((dataset) => {
+				dataset.backgroundColor.push('rgba(0, 151, 70, 1)');
+			});
+			myChart.update();
+			myChart.data.datasets.forEach((dataset) => {
+				dataset.borderColor.push('rgba(255, 102, 0, 1)');
+		});
+			myChart.update();
+}
+
+});
+
+}
+
+
+
 
 
 function snapshotDataToArray(snapshot) {
