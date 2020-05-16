@@ -29,18 +29,23 @@ firebase.auth().onAuthStateChanged(function(user) {
 	});
 
 function readUserData(name){
-	var totalsArray = [];
+	var dataArray = [];
+	var labelArray = [];
+	
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users/"+name+"/consumption/today/totals/");
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
     //console.log(child.key+": "+child.val());
+	
 	dataArray = snapshotDataToArray(snapshot);
 	labelArray = snapshotLabelToArray(snapshot);
 	//console.log(totalsArray);
 	
   });
   //console.log("The first record is: "+labelArray[0]+" : "+dataArray[0]);
+  var dailyTotal = dataArray[labelArray.length]);
+  console.log("Total consumption is: "+dailyTotal+" kWh");
   var hoursOfDay = labelArray.length - 1;
   
   var ctx = document.getElementById('myChart').getContext('2d');
