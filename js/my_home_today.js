@@ -68,7 +68,7 @@ function readUserData(name){
 });
 
 for (var i = 0; i < hoursOfDay; ++i){
-	myChart.data.labels.push(labelArray[i].label);
+	myChart.data.labels.push(labelArray[i]);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
 				dataset.backgroundColor.push('rgba(0, 151, 70, 1)');
@@ -79,7 +79,7 @@ for (var i = 0; i < hoursOfDay; ++i){
 	});
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
-		dataset.data.push(dataArray[i].value);
+		dataset.data.push(dataArray[i]);
 	});
 		myChart.update();
 }
