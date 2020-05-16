@@ -182,7 +182,7 @@ function snapshotDataToArray(snapshot) {
 	});
 	
 	return returnArray;
-};
+}
 
 function snapshotLabelToArray(snapshot) {
 	var returnArray = [];
@@ -193,5 +193,5 @@ function snapshotLabelToArray(snapshot) {
 	});
 	
 	return returnArray;
-};
+}
 
