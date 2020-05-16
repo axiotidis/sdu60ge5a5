@@ -1,4 +1,5 @@
 // Your web app's Firebase configuration
+/*
 var firebaseConfig = {
 	apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
 	authDomain: "sdy60ge5a5.firebaseapp.com",
@@ -15,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the database service
 let database = firebase.database();
-
+*/
 firebase.auth().onAuthStateChanged(function(user) {
 	user = firebase.auth().currentUser;
 	var name = user.displayName;				
