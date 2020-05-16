@@ -49,7 +49,7 @@ function readUserData(name){
     data: {
         labels: [],
         datasets: [{
-            label: 'Your consumption in detail',
+            label: 'Details of your daily consumption in kWh',
             data: [],
             backgroundColor: [],
             borderColor: [],
@@ -71,7 +71,7 @@ for (var i = 0; i < hoursOfDay; ++i){
 	myChart.data.labels.push(labelArray[i]);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
-				dataset.backgroundColor.push('rgba(0, 151, 70, 1)');
+				dataset.backgroundColor.push('rgba(255, 102, 0, 1)');
 			});
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
