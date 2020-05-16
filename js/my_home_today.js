@@ -98,7 +98,7 @@ function readTodayPerDevice(name){
 				}
 			
 			
-		};
+		});
 		myDonut.update();
 	});
 }
