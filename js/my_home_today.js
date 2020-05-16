@@ -44,7 +44,7 @@ function readUserData(name){
 	
   });
   //console.log("The first record is: "+labelArray[0]+" : "+dataArray[0]);
-  var dailyTotal = dataArray[labelArray.length-1];
+  var dailyTotal = dataArray[labelArray.length-1].toFixed(2);
   document.getElementById("consumtion").innerHTML = dailyTotal + " kWh"; //update the total consumption value
   //console.log("Total consumption is: "+dailyTotal+" kWh");
   var hoursOfDay = labelArray.length - 1;
