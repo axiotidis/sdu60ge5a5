@@ -21,10 +21,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 		user = firebase.auth().currentUser;
 		var name = user.displayName;
 		//read user details
-		while (true){
 		readTodayData(name);
 		
-		}
+		
 		} else {
 					location.replace("index.html");
 				}
