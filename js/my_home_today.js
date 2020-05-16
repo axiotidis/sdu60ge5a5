@@ -21,14 +21,17 @@ firebase.auth().onAuthStateChanged(function(user) {
 		user = firebase.auth().currentUser;
 		var name = user.displayName;
 		//read user details
-		readUserData(name);
+		while (true){
+		readTodayData(name);
+		setTimeout(readTodayData, 60000);
+		}
 		} else {
 					location.replace("index.html");
 				}
 					
 	});
 
-function readUserData(name){
+function readTodayData(name){
 	var dataArray = [];
 	var labelArray = [];
 	
