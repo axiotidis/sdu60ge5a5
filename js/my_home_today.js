@@ -21,8 +21,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 		user = firebase.auth().currentUser;
 		var name = user.displayName;
 		//read user details
-		readTodayData(name);
-		
+		readTodayTotals(name);
+		readTodayPerDevice(name);
 		
 		} else {
 					location.replace("index.html");
@@ -30,7 +30,70 @@ firebase.auth().onAuthStateChanged(function(user) {
 					
 	});
 
-function readTodayData(name){
+function readTodayPerDevice(name){
+	var dDataArray = [];
+	var dLabelArray = [];
+	var dRootRef = firebase.database().ref();
+	var dUrlRef = rootRef.child("users/"+name+"/consumption/today/perdevice/");
+	dUrlRef.once("value", function(snapshot) {
+		snapshot.forEach(function(child) {
+		//console.log(child.key+": "+child.val());
+		dDataArray = snapshotDataToArray(snapshot);
+		dLabelArray = snapshotLabelToArray(snapshot);
+		
+		var noOfDevices = dLabelArray.length;
+		
+		var dtx = document.getElementById('myDonut').getContext('2d');
+		
+		var myDonut = new Chart(dtx, {
+			type: 'doughnut',
+			data: {
+				datasets: [{
+					data: [
+					for (var j = 0; j < noOfDevices; ++j) {
+						dataset.data.push(dDataArray[j]);
+					}
+					],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+						window.chartColors.red,			//change color
+						window.chartColors.orange,		//change color
+						window.chartColors.yellow,		//change color
+					],
+					label: 'Consumption per Device'
+				}],
+				labels: [
+				for (var k = 0; k < noOfDevices; ++k) {
+					dataset.data.push(dLabelArray[k]);
+				}
+				]
+				},
+				options: {
+				responsive: true,
+				legend: {
+					position: 'top',
+				},
+				title: {
+					display: true,
+					text: 'Consumption per Device'
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				}
+				}
+			
+			
+		};
+		myDonut.update();
+	});
+}
+
+function readTodayTotals(name){
 	var dataArray = [];
 	var labelArray = [];
 	
