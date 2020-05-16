@@ -34,7 +34,7 @@ function readTodayPerDevice(name){
 	var dDataArray = [];
 	var dLabelArray = [];
 	var dRootRef = firebase.database().ref();
-	var dUrlRef = rootRef.child("users/"+name+"/consumption/today/perdevice/");
+	var dUrlRef = dRootRef.child("users/"+name+"/consumption/today/perdevice/");
 	dUrlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
 		//console.log(child.key+": "+child.val());
