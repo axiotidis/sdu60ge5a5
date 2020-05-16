@@ -35,22 +35,58 @@ function readUserData(name){
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
     //console.log(child.key+": "+child.val());
-	totalsArray = snapshotToArray(snapshot);
+	dataArray = snapshotDataToArray(snapshot);
+	labelArray = snapshotLabelToArray(snapshot);
 	//console.log(totalsArray);
 	
   });
-  console.log("The first record is: "+totalsArray[0]+" : "+totalsArray[1]);
+  console.log("The first record is: "+labelArray[0]+" : "+dataArray[0]);
 });
 
 }
 
-function snapshotToArray(snapshot) {
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'This week\'s scoring board',
+            data: [],
+            backgroundColor: [],
+            borderColor: [],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+function snapshotDataToArray(snapshot) {
+	var returnArray = [];
+	
+	snapshot.forEach(function(childSnapshot) {
+		var value = childSnapshot.val();
+		returnArray.push(value);
+	});
+	
+	return returnArray;
+};
+
+function snapshotLabelToArray(snapshot) {
 	var returnArray = [];
 	
 	snapshot.forEach(function(childSnapshot) {
 		var label = childSnapshot.key;
-		var value = childSnapshot.val();
-		returnArray.push(label, value);
+		returnArray.push(label);
 	});
 	
 	return returnArray;
