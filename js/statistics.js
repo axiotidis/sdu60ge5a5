@@ -30,6 +30,7 @@ function monthFunction(month){
 	document.getElementById("month").innerHTML = "in "+selectedMonth;
 	//alert("Selected month is: "+selectedMonth);
 	readMonthlyPerDevice(name, selectedMonth);
+	readMonthlyTotal(name, selectedMonth);
 	}
 	
 
@@ -41,6 +42,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		name = user.displayName;
 		//read user details
 		readMonthlyPerDevice(name, selectedMonth);
+		readMonthlyTotal(name, selectedMonth);
 		
 		} else {
 					location.replace("index.html");
