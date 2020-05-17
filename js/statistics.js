@@ -54,18 +54,20 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function readMonthlyTotal(name, month){
 	var mDataArray = [];
+	var mLabelArray = [];
 	var mRootRef = firebase.database().ref();
 	var mUrlRef = mRootRef.child("users/"+name+"/consumption/monthly/totals/");
 	
 	mUrlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
 		console.log(child.key+": "+child.val());
-		//mDataArray = snapshotDataToArray(snapshot);
-		
+		mDataArray = snapshotDataToArray(snapshot);
+		mLabelArray = snapshotLabelToArray(snapshot);
 		});
 		//alert("totalForThisMonth = "+mDataArray[0]);
-		//totalForThisMonth = parseFloat(mDataArray[0]).toFixed(2);
-		//document.getElementById("consumtion").innerHTML = totalForThisMonth + " kWh";
+		var myIndex = mLabelArray.findIndex(month);
+		var totalForThisMonth = parseFloat(mDataArray[myIndex]).toFixed(2);
+		document.getElementById("consumtion").innerHTML = totalForThisMonth + " kWh";
 		
 	});
 }	
