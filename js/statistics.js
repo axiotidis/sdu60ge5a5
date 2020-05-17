@@ -1,7 +1,7 @@
 //Listen for form submit
 document.getElementById('selectMonth').addEventListener('submit', submitForm);
 
-/Submit form
+//Submit form
 function submitForm(e){
     e.preventDefault();
 	var selectedMonth = getInputVal('sMonth');
