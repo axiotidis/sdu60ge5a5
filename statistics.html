@@ -61,36 +61,43 @@
 			<!--/.Navbar-->
 			
 			<div class="p-3 mb-2 bg-info text-white">
-				<p class="text-center">Total Energy Consumed per Month</p>
-				<p class="text-center" id="displayMonth"></p>
+				<p class="text-center">Monthly Energy Consumed</p>
 				<p class="text-center" id="consumtion"></p>
 			</div>
 			
-			<form id="selectMonth">
-				
-						<select class="custom-select" type="submit" id="sMonth">
-							<option type="submit" selected value="Choose a month">Choose a month</option>
-							<option type="submit" value="January">January</option>
-							<option type="submit" value="February">February</option>
-							<option type="submit" value="March">March</option>
-							<option type="submit" value="April">April</option>
-							<option type="submit" value="May">May</option>
-							<option type="submit" value="June">June</option>
-							<option type="submit" value="July">July</option>
-							<option type="submit" value="August">August</option>
-							<option type="submit" value="September">September</option>
-							<option type="submit" value="October">October</option>
-							<option type="submit" value="November">November</option>
-							<option type="submit" value="December">December</option>
-						</select>
-				
-			</form>
+			<div class="dropdown">
+				<button class="btn btn-warning btn-lg dropdown-toggle" type="button" id="sMonth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
+					Choose a month
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+					<button class="dropdown-item" type="button" onclick="monthFunction("January")">January</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("February")">February</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("March")">March</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("April")">April</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("May")">May</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("June")">June</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("July")">July</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("August")">August</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("September")">September</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("October")">October</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("November")">November</button>
+					<button class="dropdown-item" type="button" onclick="monthFunction("December")">December</button>
+				</div>
+			</div>
+			
 			
 			
 			<canvas id="myDonut" width="390" height="300"></canvas>
 			
 		</div>
 		
+		<script>
+		var selectedMonth = "";
+		function monthFunction(month){
+			selectedMonth = month;
+			alert("Selected month is: "+selectedMonth);
+		}
+		</script>
 		
 		
 		<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
@@ -100,7 +107,7 @@
 
 		
 		    
-	<script src="js/statistics.js"></script>
+	<!--	<script src="js/statistics.js"></script> -->
 		
 		
 
