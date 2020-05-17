@@ -67,9 +67,9 @@ function readTodayPerDevice(name){
 						window.chartColors.blue,
 						window.chartColors.purple,			
 						window.chartColors.grey,		
-						window.chartColors.black,		
+						window.chartColors.red,		
 					],
-					label: 'Consumption per Device'
+					label: 'Daily Consumption per Device'
 				}],
 				labels: [
 				dLabelArray[0],
@@ -89,7 +89,7 @@ function readTodayPerDevice(name){
 				},
 				title: {
 					display: true,
-					text: 'Consumption per Device'
+					text: 'Daily Consumption per Device'
 				},
 				animation: {
 					animateScale: true,
@@ -130,7 +130,7 @@ function readTodayTotals(name){
     data: {
         labels: [],
         datasets: [{
-            label: 'Details of your daily consumption in kWh',
+            label: 'Details of your daily consumption per hour in kWh',
             data: [],
             backgroundColor: [],
             borderColor: [],
