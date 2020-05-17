@@ -53,7 +53,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function readMonthlyTotal(name, month){
 	var mDataArray = [];
 	var mRootRef = firebase.database().ref();
-	var mUrlRef = mRootRef.child("users/"+name+"/consumption/monthly/totals/"+month);
+	var mUrlRef = mRootRef.child("users/"+name+"/consumption/monthly/totals/"+month+"/");
 	mUrlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
 		//console.log(child.key+": "+child.val());
