@@ -1,19 +1,3 @@
-var name = "";
-var d = new Date();
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-var selectedMonth = months[d.getMonth()];
-document.getElementById("month").innerHTML = "in "+selectedMonth;
-
-readMonthlyPerDevice(name, selectedMonth);
-
-function monthFunction(month){
-	selectedMonth = month;
-	document.getElementById("month").innerHTML = "in "+selectedMonth;
-	//alert("Selected month is: "+selectedMonth);
-	readMonthlyPerDevice(name, selectedMonth);
-	}
-	
 // Your web app's Firebase configuration
 var firebaseConfig = {
 	apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
@@ -31,6 +15,24 @@ firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the database service
 let database = firebase.database();
+
+var name = "";
+var d = new Date();
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+var selectedMonth = months[d.getMonth()];
+document.getElementById("month").innerHTML = "in "+selectedMonth;
+
+readMonthlyPerDevice(name, selectedMonth);
+
+function monthFunction(month){
+	selectedMonth = month;
+	document.getElementById("month").innerHTML = "in "+selectedMonth;
+	//alert("Selected month is: "+selectedMonth);
+	readMonthlyPerDevice(name, selectedMonth);
+	}
+	
+
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
