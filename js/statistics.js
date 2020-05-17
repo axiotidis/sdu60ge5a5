@@ -1,5 +1,5 @@
 //Listen for form submit
-document.getElementById('selectMonth').addEventListener('submit', submitForm);
+document.getElementById('sMonth').addEventListener('submit', submitForm);
 
 //Submit form
 function submitForm(e){
