@@ -61,30 +61,34 @@
 			<!--/.Navbar-->
 			
 			<div class="p-3 mb-2 bg-info text-white">
-				<p class="text-center">Monthly Energy Consumed</p>
+				<p class="text-center">Total Energy Consumed</p>
+				<p class="text-center" id="displayMonth"></p>
 				<p class="text-center" id="consumtion"></p>
 			</div>
 			
-			<div class="dropdown">
-				<button class="btn btn-warning btn-lg dropdown-toggle" type="button" id="sMonth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
-					Choose a month
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-					<button class="dropdown-item" type="button">January</button>
-					<button class="dropdown-item" type="button">February</button>
-					<button class="dropdown-item" type="button">March</button>
-					<button class="dropdown-item" type="button">April</button>
-					<button class="dropdown-item" type="button">May</button>
-					<button class="dropdown-item" type="button">June</button>
-					<button class="dropdown-item" type="button">July</button>
-					<button class="dropdown-item" type="button">August</button>
-					<button class="dropdown-item" type="button">September</button>
-					<button class="dropdown-item" type="button">October</button>
-					<button class="dropdown-item" type="button">November</button>
-					<button class="dropdown-item" type="button">December</button>
+			<form id="selectMonth">
+				<div class="form-group">
+				<div class="dropdown">
+					<button class="btn btn-warning btn-lg dropdown-toggle" input type="button" id="sMonth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
+						Choose a month
+					</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+							<button class="dropdown-item" input type="submit" value="January">January</button>
+							<button class="dropdown-item" input type="submit" value="February">February</button>
+							<button class="dropdown-item" input type="submit" value="March">March</button>
+							<button class="dropdown-item" input type="submit" value="April">April</button>
+							<button class="dropdown-item" input type="submit" value="May">May</button>
+							<button class="dropdown-item" input type="submit" value="June">June</button>
+							<button class="dropdown-item" input type="submit" value="July">July</button>
+							<button class="dropdown-item" input type="submit" value="August">August</button>
+							<button class="dropdown-item" input type="submit" value="September">September</button>
+							<button class="dropdown-item" input type="submit" value="October">October</button>
+							<button class="dropdown-item" input type="submit" value="November">November</button>
+							<button class="dropdown-item" input type="submit" value="December">December</button>
+						</div>
+					</div>
 				</div>
-			</div>
-			
+			</form>
 			
 			
 			<canvas id="myDonut" width="390" height="300"></canvas>
@@ -100,7 +104,7 @@
 
 		
 		    
-	<!--	<script src="js/statistics.js"></script> -->
+	<script src="js/statistics.js"></script>
 		
 		
 
