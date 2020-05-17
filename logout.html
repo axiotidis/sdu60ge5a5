@@ -13,6 +13,11 @@
 			<div class="text-center">
 				
 				<img src="pics/logo_small.png" class="class="rounded mx-auto d-block"" alt="Logo">
+				<p class="text-center">Do you realy want to logout?</p>
+				
+				<button type="button" class="btn btn-success btn-lg" onclick="logoutFunction()">Logout</button>
+				<button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = 'my_home_today.html';">Cancel</button>
+				
 			</div>
 			
 		
@@ -43,11 +48,13 @@
 		</script>
 		
 		<script type="text/javascript">
+		function logoutFunction(){
 			firebase.auth().signOut().then(function()  {
 			location.replace("index.html");
 			}).catch(function(error) {
 				alert(error);
 			});
+			}
 
 		</script>  
 		
