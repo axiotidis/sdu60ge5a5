@@ -60,7 +60,7 @@ function readMonthlyTotal(name, month){
 		
 		var totalForThisMonth = parseFloat(mDataArray[0]).toFixed(2);
 		document.getElementById("consumtion").innerHTML = totalForThisMonth + " kWh";
-
+	});
 }	
 	
 function readMonthlyPerDevice(name, month){
