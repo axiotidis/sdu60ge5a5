@@ -1,19 +1,6 @@
-//Listen for form submit
-document.getElementById('selectMonth').addEventListener('submit', submitForm);
-
-//Submit form
-function submitForm(e){
-    e.preventDefault();
-	var selectedMonth = getInputVal('sMonth');
-	alert("Selected Month is: "+ selectedMonth);	
-}
-
-
-/*
-
-var e = document.getElementById('sMonth');
-
-var selectedMonth = e.options[e.selectedIndex].value;
-alert("Selected Month is: "+ selectedMonth);
-
-*/
+var selectedMonth = "";
+		function monthFunction(month){
+			selectedMonth = month;
+			document.getElementById("month").innerHTML = "in "+selectedMonth;
+			alert("Selected month is: "+selectedMonth);
+		}
