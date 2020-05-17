@@ -138,6 +138,14 @@ function readTodayTotals(name){
         }]
     },
     options: {
+		responsive: true,
+		legend: {
+			display: false,
+				},
+		title: {
+			display: true,
+			text: 'Details of your daily consumption per hour in kWh'
+				},
         scales: {
             yAxes: [{
                 ticks: {
