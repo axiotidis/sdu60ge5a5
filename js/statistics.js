@@ -66,7 +66,7 @@ function readMonthlyTotal(name, month){
 		mLabelArray = snapshotLabelToArray(snapshot);
 		});
 		//alert("totalForThisMonth = "+mDataArray[0]);
-		var myIndex = mLabelArray.findIndex(sMonth);
+		var myIndex = mLabelArray.indexOf(sMonth);
 		var totalForThisMonth = parseFloat(mDataArray[myIndex]).toFixed(2);
 		document.getElementById("consumtion").innerHTML = totalForThisMonth + " kWh";
 		
