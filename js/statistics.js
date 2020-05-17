@@ -58,11 +58,11 @@ function readMonthlyTotal(name, month){
 		snapshot.forEach(function(child) {
 		//console.log(child.key+": "+child.val());
 		mDataArray = snapshotDataToArray(snapshot);
+		
+		});
 		alert("totalForThisMonth = "+mDataArray[0]);
 		var totalForThisMonth = parseFloat(mDataArray[0]).toFixed(2);
 		document.getElementById("consumtion").innerHTML = totalForThisMonth + " kWh";
-		});
-		
 		
 	});
 }	
