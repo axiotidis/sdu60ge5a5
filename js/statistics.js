@@ -23,7 +23,7 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 var selectedMonth = months[d.getMonth()];
 document.getElementById("month").innerHTML = "in "+selectedMonth;
 
-readMonthlyPerDevice(name, selectedMonth);
+
 
 function monthFunction(month){
 	selectedMonth = month;
@@ -40,7 +40,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		//var name = user.displayName;
 		name = user.displayName;
 		//read user details
-		
+		readMonthlyPerDevice(name, selectedMonth);
 		
 		} else {
 					location.replace("index.html");
