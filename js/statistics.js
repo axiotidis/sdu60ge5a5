@@ -5,10 +5,7 @@ document.getElementById('selectMonth').addEventListener('submit', submitForm);
 function submitForm(e){
     e.preventDefault();
 	var selectedMonth = getInputVal('sMonth');
-	if (selectedMonth != "Choose a month"){
-		alert("Selected Month is: "+ selectedMonth);
-	}
-	
+	alert("Selected Month is: "+ selectedMonth);	
 }
 
 
