@@ -1,7 +1,7 @@
 var d = new Date();
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-var selectedMonth = d.getMonth();
+var selectedMonth = months[d.getMonth()];
 document.getElementById("month").innerHTML = "in "+selectedMonth;
 
 function monthFunction(month){
