@@ -53,6 +53,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 function readMonthlyTotal(name, month){
+	var sMonth = month;
 	var mDataArray = [];
 	var mLabelArray = [];
 	var mRootRef = firebase.database().ref();
@@ -65,7 +66,7 @@ function readMonthlyTotal(name, month){
 		mLabelArray = snapshotLabelToArray(snapshot);
 		});
 		//alert("totalForThisMonth = "+mDataArray[0]);
-		var myIndex = mLabelArray.findIndex(month);
+		var myIndex = mLabelArray.findIndex(sMonth);
 		var totalForThisMonth = parseFloat(mDataArray[myIndex]).toFixed(2);
 		document.getElementById("consumtion").innerHTML = totalForThisMonth + " kWh";
 		
