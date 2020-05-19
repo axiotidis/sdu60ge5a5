@@ -39,21 +39,15 @@ function readUserPoints(name){
 	var urlRef = rootRef.child("users");
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
-    console.log(child.key+": "+child.val());
-	
-	/////////////userArray = snapshotDataToArray(snapshot);
+    //console.log(child.key+": "+child.val());
+	userArray = snapshotLabelToArray(snapshot);
 	/////////////pointsArray = snapshotLabelToArray(snapshot);
 	//console.log(totalsArray);
 	
   });
-  /*
-  //console.log("The first record is: "+labelArray[0]+" : "+dataArray[0]);
-  var dailyTotal = parseFloat(dataArray[labelArray.length-1]).toFixed(2);
-  document.getElementById("consumtion").innerHTML = dailyTotal + " kWh"; //update the total consumption value
-  //console.log("Total consumption is: "+dailyTotal+" kWh");
-  var hoursOfDay = labelArray.length - 1;
   
-  */
+  var noumberOfusers = userArray.length;
+  
   var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
     type: 'horizontalBar',
@@ -85,9 +79,9 @@ function readUserPoints(name){
         }
     }
 });
-/*
-for (var i = 0; i < hoursOfDay; ++i){
-	myChart.data.labels.push(labelArray[i]);
+
+for (var i = 0; i < noumberOfusers; ++i){
+	myChart.data.labels.push(userArray[i]);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
 				dataset.backgroundColor.push('rgba(255, 102, 0, 1)');
@@ -102,7 +96,7 @@ for (var i = 0; i < hoursOfDay; ++i){
 	});
 		myChart.update();
 }
-*/
+
 });
 
 }
