@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		user = firebase.auth().currentUser;
 		var name = user.displayName;
 		//read user details
-		readTodayTotals(name);
+		//readTodayTotals(name);
 		
 		
 		} else {
