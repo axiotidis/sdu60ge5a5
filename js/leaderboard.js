@@ -91,10 +91,10 @@ for (var i = 0; i < noumberOfusers; ++i){
 		dataset.borderColor.push('rgba(255, 102, 0, 1)');
 	});
 	myChart.update();
-	myChart.data.datasets.forEach((dataset) => {
+	/*myChart.data.datasets.forEach((dataset) => {
 		dataset.data.push(dataArray[i]);
 	});
-		myChart.update();
+		myChart.update();*/
 }
 
 });
