@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		user = firebase.auth().currentUser;
 		var name = user.displayName;
 		//read user details
-		//readTodayTotals(name);
+		readUserPoints(name);
 		
 		
 		} else {
@@ -31,27 +31,29 @@ firebase.auth().onAuthStateChanged(function(user) {
 	});
 
 
-function readTodayTotals(name){
-	var dataArray = [];
-	var labelArray = [];
+function readUserPoints(name){
+	var userArray = [];
+	var pointsArray = [];
 	
 	var rootRef = firebase.database().ref();
-	var urlRef = rootRef.child("users/"+name+"/consumption/today/totals/");
+	var urlRef = rootRef.child("users");
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
-    //console.log(child.key+": "+child.val());
+    console.log(child.key+": "+child.val());
 	
-	dataArray = snapshotDataToArray(snapshot);
-	labelArray = snapshotLabelToArray(snapshot);
+	/////////////userArray = snapshotDataToArray(snapshot);
+	/////////////pointsArray = snapshotLabelToArray(snapshot);
 	//console.log(totalsArray);
 	
   });
+  /*
   //console.log("The first record is: "+labelArray[0]+" : "+dataArray[0]);
   var dailyTotal = parseFloat(dataArray[labelArray.length-1]).toFixed(2);
   document.getElementById("consumtion").innerHTML = dailyTotal + " kWh"; //update the total consumption value
   //console.log("Total consumption is: "+dailyTotal+" kWh");
   var hoursOfDay = labelArray.length - 1;
   
+  */
   var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
     type: 'horizontalBar',
@@ -83,7 +85,7 @@ function readTodayTotals(name){
         }
     }
 });
-
+/*
 for (var i = 0; i < hoursOfDay; ++i){
 	myChart.data.labels.push(labelArray[i]);
 	myChart.update();
@@ -100,7 +102,7 @@ for (var i = 0; i < hoursOfDay; ++i){
 	});
 		myChart.update();
 }
-
+*/
 });
 
 }
