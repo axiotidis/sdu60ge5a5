@@ -66,7 +66,12 @@ function readUserPoints(name){
   var numberOfusers = userArray.length;
 	for (var j = 0; j < numberOfusers; ++j) {
 	  //pointsArray[j] = checkUserPoints(userArray[j]);
-	  pointsArray[j] = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value')
+	  pointsArray[j] = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
+		  var userVal = (snapshot.val();
+		  console.log("userVal = "+userVal);
+  
+});
+
 	  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
 	}
   
