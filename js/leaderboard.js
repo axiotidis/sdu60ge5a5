@@ -34,7 +34,7 @@ function checkUserPoints(user) {
 	var ref = firebase.database().ref("users/"+user+"/profile/points");
 	var userPoints = ref.on("value" , gotData , errData);
 	return userPoints;
-	});
+	
 }
 
 function gotData(data){
