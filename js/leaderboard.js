@@ -1,3 +1,4 @@
+var pointsArray = [];
 // Your web app's Firebase configuration
 var firebaseConfig = {
 	apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
@@ -51,7 +52,7 @@ function errData(error){
 
 function readUserPoints(name){
 	var userArray = [];
-	var pointsArray = [];
+	
 	
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users");
@@ -69,11 +70,11 @@ function readUserPoints(name){
 	  var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
 		  var userVal = (snapshot.val());
 		  pointsArray[j] = userVal;
-		  //console.log("userVal = "+pointsArray[j]);
+		  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
   
 });
 
-	  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
+	  console.log("pointsArray2\["+j+"\]= "+pointsArray[j]);
 	}
   
   
