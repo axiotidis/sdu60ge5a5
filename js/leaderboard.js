@@ -59,12 +59,13 @@ function readUserPoints(name){
 	userArray = snapshotLabelToArray(snapshot);
 	/////////////pointsArray = snapshotLabelToArray(snapshot);
 	//console.log(totalsArray);
-	var noumberOfusers = userArray.length;
-	for (var j = 0; j < noumberOfusers; ++j) {
-	  pointsArray[j] = checkUserPoints(userArray[j]);
-	}
+	
   });
-  
+  var numberOfusers = userArray.length;
+	for (var j = 0; j < numberOfusers; ++j) {
+	  pointsArray[j] = checkUserPoints(userArray[j]);
+	  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
+	}
   
   
   var ctx = document.getElementById('myChart').getContext('2d');
@@ -99,7 +100,7 @@ function readUserPoints(name){
     }
 });
 
-for (var i = 0; i < noumberOfusers; ++i){
+for (var i = 0; i < numberOfusers; ++i){
 	myChart.data.labels.push(userArray[i]);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
