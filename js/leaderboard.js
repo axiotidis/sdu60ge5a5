@@ -30,6 +30,22 @@ firebase.auth().onAuthStateChanged(function(user) {
 					
 	});
 
+function checkUserPoints(user) {
+	var ref = firebase.database().ref("users/"+user+"/profile/points");
+	var userPoints = ref.on("value" , gotData , errData);
+	return userPoints;
+	});
+}
+
+function gotData(data){
+	data = data.val();
+	userPoints = data.points;
+	return userPoints;
+}
+
+function errData(error){
+	console.log(error.message , error.code);
+}
 
 function readUserPoints(name){
 	var userArray = [];
@@ -47,6 +63,9 @@ function readUserPoints(name){
   });
   
   var noumberOfusers = userArray.length;
+  for (var j = 0; j < noumberOfusers; ++j) {
+	  pointsArray[j] = checkUserPoints(userArray[j]);
+  }
   
   var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
@@ -91,10 +110,10 @@ for (var i = 0; i < noumberOfusers; ++i){
 		dataset.borderColor.push('rgba(255, 102, 0, 1)');
 	});
 	myChart.update();
-	/*myChart.data.datasets.forEach((dataset) => {
-		dataset.data.push(dataArray[i]);
+	myChart.data.datasets.forEach((dataset) => {
+		dataset.data.push(pointsArray[i]);
 	});
-		myChart.update();*/
+		myChart.update();
 }
 
 });
