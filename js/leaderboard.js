@@ -51,7 +51,7 @@ function errData(error){
 
 function readUserPoints(name){
 	var userArray = [];
-	var pointsArray[];
+	var pointsArray = [];
 	
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users");
