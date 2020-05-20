@@ -30,22 +30,24 @@ firebase.auth().onAuthStateChanged(function(user) {
 					
 	});
 
+/*
 function checkUserPoints(user) {
 	var ref = firebase.database().ref("users/"+user+"/profile/points");
-	var userPoints = ref.on("value" , gotData , errData);
-	return userPoints;
+	ref.on("value" , gotData , errData);
+	
 	
 }
 
 function gotData(data){
 	data = data.val();
 	userPoints = data.points;
-	return userPoints;
+	var pointsArray = [];
+	
 }
 
 function errData(error){
 	console.log(error.message , error.code);
-}
+}*/
 
 function readUserPoints(name){
 	var userArray = [];
@@ -63,7 +65,8 @@ function readUserPoints(name){
   });
   var numberOfusers = userArray.length;
 	for (var j = 0; j < numberOfusers; ++j) {
-	  pointsArray[j] = checkUserPoints(userArray[j]);
+	  //pointsArray[j] = checkUserPoints(userArray[j]);
+	  pointsArray[j] = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value')
 	  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
 	}
   
