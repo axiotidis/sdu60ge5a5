@@ -31,24 +31,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					
 	});
 
-/*
-function checkUserPoints(user) {
-	var ref = firebase.database().ref("users/"+user+"/profile/points");
-	ref.on("value" , gotData , errData);
-	
-	
-}
 
-function gotData(data){
-	data = data.val();
-	userPoints = data.points;
-	var pointsArray = [];
-	
-}
-
-function errData(error){
-	console.log(error.message , error.code);
-}*/
 
 function readUserPoints(name){
 	var userArray = [];
@@ -58,10 +41,8 @@ function readUserPoints(name){
 	var urlRef = rootRef.child("users");
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
-    //console.log(child.key+": "+child.val());
 	userArray = snapshotLabelToArray(snapshot);
-	/////////////pointsArray = snapshotLabelToArray(snapshot);
-	//console.log(totalsArray);
+	
 	
   });
   var numberOfusers = userArray.length;
@@ -71,11 +52,10 @@ function readUserPoints(name){
 		  var userVal = (snapshot.val());
 		  pointsArray[j] = userVal;
 		  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
-  
-});
-
-	  console.log("pointsArray2\["+j+"\]= "+pointsArray[j]);
-	}
+		  });
+		/////////////////////////////////////////////////////////////////////////////////////////////
+	  
+	
   
   
   var ctx = document.getElementById('myChart').getContext('2d');
@@ -126,7 +106,7 @@ for (var i = 0; i < numberOfusers; ++i){
 	});
 		myChart.update();
 }
-
+	}//////////////////////////////////////////////////////////////
 });
 
 }
