@@ -51,7 +51,7 @@ function errData(error){
 
 function readUserPoints(name){
 	var userArray = [];
-	
+	var pointsArray[];
 	
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users");
@@ -67,7 +67,8 @@ function readUserPoints(name){
 	for (var j = 0; j < numberOfusers; ++j) {
 	  //pointsArray[j] = checkUserPoints(userArray[j]);
 	  var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
-		  var pointsArray[j] = snapshot.val();
+		  var userVal = (snapshot.val());
+		  pointsArray[j] = userVal;
 		  //console.log("userVal = "+pointsArray[j]);
   
 });
