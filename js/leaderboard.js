@@ -59,13 +59,13 @@ function readUserPoints(name){
 	userArray = snapshotLabelToArray(snapshot);
 	/////////////pointsArray = snapshotLabelToArray(snapshot);
 	//console.log(totalsArray);
-	
+	var noumberOfusers = userArray.length;
+	for (var j = 0; j < noumberOfusers; ++j) {
+	  pointsArray[j] = checkUserPoints(userArray[j]);
+	}
   });
   
-  var noumberOfusers = userArray.length;
-  for (var j = 0; j < noumberOfusers; ++j) {
-	  pointsArray[j] = checkUserPoints(userArray[j]);
-  }
+  
   
   var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
