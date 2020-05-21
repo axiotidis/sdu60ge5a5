@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var name = user.displayName;
 		//read user details
 		readUserPoints(name);
-		pointsArray = snapshotDataToArray();
+		pointsArray = snapshotDataToArray(numberOfusers);
 		
 		} else {
 					location.replace("index.html");
@@ -109,7 +109,7 @@ for (var i = 0; i < numberOfusers; ++i){
 
 
 
-function snapshotDataToArray() {
+function snapshotDataToArray(numberOfusers) {
 	var returnArray = [];
 	for (var j = 0; j < numberOfusers; ++j){
 	  var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
