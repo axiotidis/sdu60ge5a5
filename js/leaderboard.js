@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var name = user.displayName;
 		//read user details
 		readUserPoints(name);
-		
+		pointsArray = snapshotDataToArray();
 		
 		} else {
 					location.replace("index.html");
@@ -49,15 +49,7 @@ function readUserPoints(name){
   
   numberOfusers = userArray.length;
   
-  for (var j = 0; j < numberOfusers; ++j){
-	  var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
-		  var pointVal = snapshot.val();
-		  console.log("pointVal= "+pointVal);
-		  pointsArray.push(pointVal);
-		  
-		  });
-		  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
-  }
+  
   
   var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
@@ -117,16 +109,26 @@ for (var i = 0; i < numberOfusers; ++i){
 
 
 
-function snapshotDataToArray(snapshot) {
+function snapshotDataToArray() {
 	var returnArray = [];
-	
-	snapshot.forEach(function(childSnapshot) {
+	for (var j = 0; j < numberOfusers; ++j){
+	  var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
+		  var pointVal = snapshot.val();
+		  console.log("pointVal= "+pointVal);
+		  returnArray.push(pointVal);
+		  
+		  });
+		  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
+		  }
+	/*snapshot.forEach(function(childSnapshot) {
 		var value = childSnapshot.val();
 		returnArray.push(value);
-	});
+	});*/
 	
 	return returnArray;
-};
+}
+
+
 
 function snapshotLabelToArray(snapshot) {
 	var returnArray = [];
