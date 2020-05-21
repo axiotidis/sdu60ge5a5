@@ -1,3 +1,5 @@
+var userArray = [];
+var pointsArray = [];
 // Your web app's Firebase configuration
 var firebaseConfig = {
 	apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
@@ -32,8 +34,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 function readUserPoints(name){
-	var userArray = [];
-	var pointsArray = [];
+	
 	
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users");
