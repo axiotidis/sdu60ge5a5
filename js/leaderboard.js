@@ -1,4 +1,3 @@
-var pointsArray = [];
 // Your web app's Firebase configuration
 var firebaseConfig = {
 	apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
@@ -32,31 +31,28 @@ firebase.auth().onAuthStateChanged(function(user) {
 	});
 
 
-
 function readUserPoints(name){
 	var userArray = [];
-	
+	var pointsArray = [];
 	
 	var rootRef = firebase.database().ref();
 	var urlRef = rootRef.child("users");
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
+    
 	userArray = snapshotLabelToArray(snapshot);
 	
 	
   });
-  var numberOfusers = userArray.length;
-	for (var j = 0; j < numberOfusers; ++j) {
-	  //pointsArray[j] = checkUserPoints(userArray[j]);
+  
+  var noumberOfusers = userArray.length;
+  for (var j = 0; j < numberOfusers; ++j){
 	  var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
 		  var userVal = (snapshot.val());
 		  pointsArray[j] = userVal;
 		  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
 		  });
-		/////////////////////////////////////////////////////////////////////////////////////////////
-	  
-	
-  
+  }
   
   var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
@@ -90,7 +86,7 @@ function readUserPoints(name){
     }
 });
 
-for (var i = 0; i < numberOfusers; ++i){
+for (var i = 0; i < noumberOfusers; ++i){
 	myChart.data.labels.push(userArray[i]);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
@@ -103,10 +99,11 @@ for (var i = 0; i < numberOfusers; ++i){
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
 		dataset.data.push(pointsArray[i]);
+		console.log("push to chart: "+pointsArray[i]);
 	});
 		myChart.update();
 }
-	}//////////////////////////////////////////////////////////////
+
 });
 
 }
