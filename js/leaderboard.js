@@ -64,7 +64,7 @@ function readUserPoints(name){
         }]
     },
     options: {
-		responsive: true,
+		responsive: false,
 		legend: {
 			display: false,
 				},
