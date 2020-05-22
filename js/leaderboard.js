@@ -100,7 +100,7 @@ for (var i = 0; i < numberOfusers; ++i){
 		  dataset.data.push(pointVal);
 		  myChart.update();
 		  
-	}
+	});
 	/*myChart.data.datasets.forEach((dataset) => {
 		dataset.data.push(pointsArray[i]);
 	});
