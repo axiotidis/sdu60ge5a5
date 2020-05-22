@@ -56,7 +56,7 @@ function readUserPoints(name){
     data: {
         labels: [],
         datasets: [{
-            label: 'This Month\'s Leaderboard',
+            label: 'This Month\'s Points',
             data: [],
             backgroundColor: [],
             borderColor: [],
@@ -75,7 +75,8 @@ function readUserPoints(name){
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    //beginAtZero: true
+					beginAtZero: false
                 }
             }]
         }
