@@ -104,7 +104,7 @@ for (var j = 0; j < numberOfusers; ++j){
 		  var pointVal = snapshot.val();
 		  console.log("pointVal= "+pointVal);
 		  myChart.data.datasets.forEach((dataset) => {
-		dataset.data.push(pointsArray[i]);
+		dataset.data.push(pointVal);
 	});
 		myChart.update();
 		  
