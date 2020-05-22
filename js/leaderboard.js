@@ -82,7 +82,7 @@ function readUserPoints(name){
     }
 });
 
-for (var i = 0; i < noumberOfusers; ++i){
+for (var i = 0; i < numberOfusers; ++i){
 	myChart.data.labels.push(userArray[i]);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
