@@ -103,7 +103,7 @@ for (var j = 0; j < numberOfusers; ++j){
 		var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
 		  var pointVal = snapshot.val();
 		  console.log("pointVal= "+pointVal);
-		  myChart.dataset.data.push(pointVal);
+		  myChart.data.dataset.data.push(pointVal);
 		  myChart.update();
 		  
 	});
