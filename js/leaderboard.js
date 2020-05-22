@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var name = user.displayName;
 		//read user details
 		readUserPoints(name);
-		pointsArray = snapshotDataToArray(numberOfusers);
+		
 		
 		} else {
 					location.replace("index.html");
@@ -41,15 +41,14 @@ function readUserPoints(name){
 	var urlRef = rootRef.child("users");
 	urlRef.once("value", function(snapshot) {
 		snapshot.forEach(function(child) {
-    
+    //console.log(child.key+": "+child.val());
 	userArray = snapshotLabelToArray(snapshot);
-	
+	/////////////pointsArray = snapshotLabelToArray(snapshot);
+	//console.log(totalsArray);
 	
   });
   
   numberOfusers = userArray.length;
-  
-  
   
   var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
@@ -83,7 +82,7 @@ function readUserPoints(name){
     }
 });
 
-for (var i = 0; i < numberOfusers; ++i){
+for (var i = 0; i < noumberOfusers; ++i){
 	myChart.data.labels.push(userArray[i]);
 	myChart.update();
 	myChart.data.datasets.forEach((dataset) => {
@@ -94,11 +93,20 @@ for (var i = 0; i < numberOfusers; ++i){
 		dataset.borderColor.push('rgba(255, 102, 0, 1)');
 	});
 	myChart.update();
-	myChart.data.datasets.forEach((dataset) => {
-		dataset.data.push(pointsArray[i]);
-		console.log("push to chart: "+pointsArray[i]);
-	});
+	for (var j = 0; j < numberOfusers; ++j){
+		var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
+		  var pointVal = snapshot.val();
+		  console.log("pointVal= "+pointVal);
+		  myChart.data.datasets.forEach((dataset) => {
+		dataset.data.push(pointVal);
+		});
 		myChart.update();
+		  });
+	}
+	/*myChart.data.datasets.forEach((dataset) => {
+		dataset.data.push(pointsArray[i]);
+	});
+		myChart.update();*/
 }
 
 });
@@ -109,26 +117,16 @@ for (var i = 0; i < numberOfusers; ++i){
 
 
 
-function snapshotDataToArray(numberOfusers) {
+function snapshotDataToArray(snapshot) {
 	var returnArray = [];
-	for (var j = 0; j < numberOfusers; ++j){
-	  var ref = firebase.database().ref("users/"+userArray[j]+"/profile/points").once('value').then(function(snapshot) {
-		  var pointVal = snapshot.val();
-		  console.log("pointVal= "+pointVal);
-		  returnArray.push(pointVal);
-		  
-		  });
-		  console.log("pointsArray\["+j+"\]= "+pointsArray[j]);
-		  }
-	/*snapshot.forEach(function(childSnapshot) {
+	
+	snapshot.forEach(function(childSnapshot) {
 		var value = childSnapshot.val();
 		returnArray.push(value);
-	});*/
+	});
 	
 	return returnArray;
-}
-
-
+};
 
 function snapshotLabelToArray(snapshot) {
 	var returnArray = [];
