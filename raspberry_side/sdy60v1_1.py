@@ -19,10 +19,10 @@ cuser = "Christos Axiotidis"
 
 #firebase configuration
 config = {
-  "apiKey": "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
-  "authDomain": "sdy60ge5a5.firebaseapp.com",
-  "databaseURL": "https://sdy60ge5a5.firebaseio.com",
-  "storageBucket": "sdy60ge5a5.appspot.com"
+  "apiKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "authDomain": "xxxxxxxxxxxxx.firebaseapp.com",
+  "databaseURL": "https://xxxxxxxxxxx.firebaseio.com",
+  "storageBucket": "xxxxxxxxxxxxxx.appspot.com"
 }
 
 firebase = pyrebase.initialize_app(config)
@@ -72,8 +72,8 @@ windowEvent = False
 
 #MySql database properties
 address = "localhost"
-username = "chris"
-password = "NEI-3793"
+username = "xxxxx"
+password = "xxxxxxxxxx"
 database = "homedata"
 
 radio = NRF24(GPIO, spidev.SpiDev())
