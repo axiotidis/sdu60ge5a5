@@ -78,7 +78,7 @@ var ref = firebase.database().ref("users/"+name+"/profile/points").once('value')
 }
 
 function startGame() {
-    myGamePiece = new component(36, 46, "penguin.png", 10, 10, "image");
+    myGamePiece = new component(36, 46, "penguin.png", 50, 50, "image");
 	myIcePiece = new component(iceH, iceW, "ice.png", 0, 0, "image");
     myGameArea.start();
 }
