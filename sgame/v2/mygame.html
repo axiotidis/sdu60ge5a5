@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sirius Game</title>
+<title>Serious Game</title>
 <style>
 canvas {
     border:1px solid #d3d3d3;
@@ -11,7 +11,7 @@ canvas {
 }
 </style>
 </head>
-<body onload="startGame()">
+<body>
 <div>
 <p><b>Points:</b></p>
 <p id="points">0</p>
@@ -20,9 +20,60 @@ canvas {
 
 var myGamePiece;
 var myIcePiece;
+var pointVal;
+var iceH;
+var iceW;
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+	apiKey: "AIzaSyAvP3cRKmoJvCwcJYYJLRe_ARPN1_wngYo",
+	authDomain: "sdy60ge5a5.firebaseapp.com",
+	databaseURL: "https://sdy60ge5a5.firebaseio.com",
+	projectId: "sdy60ge5a5",
+	storageBucket: "sdy60ge5a5.appspot.com",
+	messagingSenderId: "96930165171",
+	appId: "1:96930165171:web:1c766954e21cc757d09bc6",
+	measurementId: "G-H3SGFNEN3P"
+	};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+let database = firebase.database();
+
+var name = "";
+
+firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+		user = firebase.auth().currentUser;
+		
+		name = user.displayName;
+		//read user points
+		readUserPoints(name);
+		
+		} else {
+					location.replace("https://axiotidis.github.io/sdu60ge5a5/");
+				}
+					
+	});
+	
+function readUserPoints(name){
+var ref = firebase.database().ref("users/"+name+"/profile/points").once('value').then(function(snapshot) {
+		  pointVal = snapshot.val();
+		  console.log("pointVal= "+pointVal);
+		  document.getElementById("points").innerHTML = pointVal;
+		  iceH = pointVal * 3.5;
+		  iceW = pointVal * 2.42;
+		  startGame();
+		
+		  
+	});
+}
+
 function startGame() {
     myGamePiece = new component(36, 46, "penguin.png", 150, 150, "image");
-	myIcePiece = new component(350, 242, "ice.png", 0, 85, "image");
+	myIcePiece = new component(iceH, iceW, "ice.png", 0, 85, "image");
     myGameArea.start();
 }
 
@@ -110,7 +161,7 @@ function clearmove() {
 
 		
 		    
-<script src="mysgame.js"></script>
+
 
 <div style="text-align:center;width:358px;">
   <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()"><img src="up_arrow.png" /></button><br><br>
