@@ -80,9 +80,9 @@ var ref = firebase.database().ref("users/"+name+"/profile/points").once('value')
 }
 
 function startGame() {
-	grassPiece = new component(grassH, 400, "grass.png", 0, 0, "image");
+	grassPiece = new component(358, grassH, "grass.png", 0, 0, "image");
 	lambPiece = new component(53, 90, "lambs.png", 134, 0, "image");
-	sandPiece = new component(sandH, 400, "sand.png", 0, grassH, "image");
+	sandPiece = new component(358, sandH, "sand.png", 0, grassH, "image");
     myGameArea.start();
 }
 
