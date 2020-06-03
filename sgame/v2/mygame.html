@@ -7,7 +7,7 @@
 <style>
 canvas {
     border:1px solid #d3d3d3;
-    background-color: #28C8FF;
+    background-color: #FFFFFF;
 }
 </style>
 </head>
@@ -71,8 +71,8 @@ var ref = firebase.database().ref("users/"+name+"/profile/points").once('value')
 		  pointVal = snapshot.val();
 		  console.log("pointVal= "+pointVal);
 		  document.getElementById("points").innerHTML = pointVal;
-		  grassH = pointVal-20;
-		  sandH = 680 - pointVal;
+		  grassH = pointVal-50;
+		  sandH = 650 - pointVal;
 		  startGame();
 		
 		  
