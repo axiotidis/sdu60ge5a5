@@ -13,8 +13,7 @@ canvas {
 </head>
 <body>
 <div>
-<p><b>Points:</b></p>
-<p id="points">0</p>
+	<p><b>Points:<span id="points">0</span></b></p>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
@@ -24,11 +23,14 @@ canvas {
 
 <script>
 
-var myGamePiece;
-var myIcePiece;
+var lambPiece;
+var grassPiece;
+var sandPiece;
 var pointVal;
-var iceH;
-var iceW;
+var grassH;
+var sandH;
+
+
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -69,8 +71,8 @@ var ref = firebase.database().ref("users/"+name+"/profile/points").once('value')
 		  pointVal = snapshot.val();
 		  console.log("pointVal= "+pointVal);
 		  document.getElementById("points").innerHTML = pointVal;
-		  iceH = pointVal * 3.5;
-		  iceW = pointVal * 2.42;
+		  grassH = pointVal;
+		  sandH = 700 - pointVal;
 		  startGame();
 		
 		  
@@ -78,8 +80,9 @@ var ref = firebase.database().ref("users/"+name+"/profile/points").once('value')
 }
 
 function startGame() {
-    myGamePiece = new component(36, 46, "penguin.png", 10, 10, "image");
-	myIcePiece = new component(iceH, iceW, "ice.png", 0, 0, "image");
+	grassPiece = new component(grassH, 358, "grass.png", 0, 0, "image");
+	lambPiece = new component(53, 90, "lambs.png", 0, 134, "image");
+	sandPiece = new component(sandH, 358, "sand.png", grassH, 0, "image");
     myGameArea.start();
 }
 
@@ -87,7 +90,7 @@ var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 358;
-        this.canvas.height = 350;
+        this.canvas.height = 700;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -133,46 +136,17 @@ function component(width, height, color, x, y, type) {
 
 function updateGameArea() {
     myGameArea.clear();
-	myIcePiece.update();
-    myGamePiece.newPos();
-    myGamePiece.update();
+	grassPiece.update();
+	lambPiece.update();
+	sandPiece.update();
+	
+	//myIcePiece.update();
+    //myGamePiece.newPos();
+    //myGamePiece.update();
 }
 
-function moveup() {
-    myGamePiece.speedY = -1; 
-}
 
-function movedown() {
-    myGamePiece.speedY = 1; 
-}
-
-function moveleft() {
-    myGamePiece.speedX = -1; 
-}
-
-function moveright() {
-    myGamePiece.speedX = 1; 
-}
-
-function clearmove() {
-    myGamePiece.speedX = 0; 
-    myGamePiece.speedY = 0; 
-}
 </script>
-
-
-
-		
-		    
-
-
-<div style="text-align:center;width:358px;">
-  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()"><img src="up_arrow.png" /></button><br><br>
-  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()"><img src="left_arrow.png" /></button>
-  <button><img src="o.png" /></button>
-  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()"><img src="right_arrow.png" /></button><br><br>
-  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()"><img src="down_arrow.png" /></button>
-</div>
 
 </body>
 </html>
