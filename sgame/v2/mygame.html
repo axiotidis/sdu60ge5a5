@@ -71,8 +71,8 @@ var ref = firebase.database().ref("users/"+name+"/profile/points").once('value')
 		  pointVal = snapshot.val();
 		  console.log("pointVal= "+pointVal);
 		  document.getElementById("points").innerHTML = pointVal;
-		  grassH = pointVal;
-		  sandH = 700 - pointVal;
+		  grassH = pointVal-20;
+		  sandH = 680 - pointVal;
 		  startGame();
 		
 		  
